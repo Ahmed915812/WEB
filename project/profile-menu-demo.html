@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Menu Component</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --header-maroon: #600000;
+            --accent-gold: #FFD700;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .profile-menu-demo {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background-color: var(--header-maroon);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-header h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .profile-menu {
+            padding: 20px;
+        }
+
+        .profile-btn {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            color: #333;
+            border: 2px solid var(--header-maroon);
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .profile-btn:hover {
+            background-color: var(--header-maroon);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .profile-btn:last-child {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .demo-trigger {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .demo-btn {
+            padding: 12px 24px;
+            background-color: var(--header-maroon);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .demo-btn:hover {
+            background-color: #800000;
+            transform: translateY(-2px);
+        }
+
+        .code-section {
+            margin-top: 30px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .code-section h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-menu-demo">
+        <div class="profile-header">
+            <div class="profile-avatar">👤</div>
+            <h3>Profile Menu</h3>
+            <p>User Account</p>
+        </div>
+
+        <div class="profile-menu">
+            <button class="profile-btn" onclick="logout()">Log out</button>
+            <button class="profile-btn" onclick="switchUser()">SWITCH USER</button>
+            <button class="profile-btn" onclick="visitNexGen()">NexGen Technologies</button>
+        </div>
+    </div>
+
+    <div class="demo-trigger">
+        <button class="demo-btn" onclick="alert('This is how the profile menu appears in your Scout Shop!')">Test Profile Menu</button>
+    </div>
+
+    <div class="code-section">
+        <h4>HTML Code to Add to Your Pages:</h4>
+        <div class="code-block">&lt;!-- Profile Modal --&gt;
+&lt;div id="profileModal" class="modal"&gt;
+    &lt;div class="modal-content profile-modal"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;h3&gt;👤 Profile&lt;/h3&gt;
+            &lt;span class="close" onclick="closeProfile()"&gt;&times;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;button class="modal-btn" onclick="logout()"&gt;Log out&lt;/button&gt;
+        &lt;button class="modal-btn" onclick="switchUser()"&gt;SWITCH USER&lt;/button&gt;
+        &lt;button class="modal-btn" onclick="visitNexGen()"&gt;NexGen Technologies&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+
+    <div class="code-section">
+        <h4>JavaScript Functions:</h4>
+        <div class="code-block">// Profile Modal Functions
+function openProfile() {
+    document.getElementById('profileModal').style.display = 'block';
+}
+
+function closeProfile() {
+    document.getElementById('profileModal').style.display = 'none';
+}
+
+function logout() {
+    alert('You have been logged out.');
+    window.location.href = 'project.html';
+}
+
+function switchUser() {
+    alert('Switching user...');
+    window.location.href = 'project.html';
+}
+
+function visitNexGen() {
+    alert('Visiting NexGen Technologies...');
+}</div>
+    </div>
+
+    <script>
+        function logout() {
+            alert('You have been logged out.');
+        }
+
+        function switchUser() {
+            alert('Switching user...');
+        }
+
+        function visitNexGen() {
+            alert('Visiting NexGen Technologies...');
+        }
+    </script>
+</body>
+</html>

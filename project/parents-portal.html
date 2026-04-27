@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scout-shop.css">
+    <title>Parents Portal - Scout Shop</title>
+</head>
+<body>
+    <div class="shop-container">
+        <!-- Navigation Header -->
+        <header class="shop-header">
+            <div class="header-left">
+                <div class="logo-header">🏕️</div>
+            </div>
+            
+            <div class="header-center">
+                <input type="text" class="search-bar" placeholder="Search for your next adventure...">
+            </div>
+            
+            <div class="header-right">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openProfile()">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openCart()">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Profile Modal -->
+        <div id="profileModal" class="modal">
+            <div class="modal-content profile-modal">
+                <div class="modal-header">
+                    <h3>👤 Profile</h3>
+                    <span class="close" onclick="closeProfile()">&times;</span>
+                </div>
+                <button class="modal-btn" onclick="logout()">Log out</button>
+                <button class="modal-btn" onclick="switchUser()">SWITCH USER</button>
+                <button class="modal-btn" onclick="visitNexGen()">NexGen Technologies</button>
+            </div>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cartModal" class="modal">
+            <div class="modal-content cart-modal">
+                <div class="modal-header">
+                    <h3>🛒 Your Cart</h3>
+                    <span class="close" onclick="closeCart()">&times;</span>
+                </div>
+                <div id="cartItems"></div>
+                <div id="cartTotal"></div>
+                <button class="modal-btn checkout-btn" onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+
+        <!-- Sub-Navigation -->
+        <nav class="sub-navigation" id="mobileMenu">
+            <a href="home.html" class="nav-link">Home Page</a>
+            <a href="about-us.html" class="nav-link">About Us</a>
+            <a href="scout-shop.html" class="nav-link">Activities</a>
+            <a href="contact-us.html" class="nav-link">Contact Us</a>
+            <a href="parents-portal.html" class="nav-link active">Parents Portal</a>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="shop-main">
+            <div class="parents-portal">
+                <h2>👨‍👩‍👧‍👦 Parents Portal</h2>
+                <p>Welcome to the Parents Portal! Here you can find resources and information to support your child's scouting journey.</p>
+
+                <div class="portal-sections">
+                    <!-- Scout Progress Tracking -->
+                    <div class="portal-section">
+                        <h3>📊 Scout Progress Tracking</h3>
+                        <p>Monitor your child's badge progress and achievements.</p>
+                        <button class="portal-btn" onclick="viewProgress()">View Progress</button>
+                    </div>
+
+                    <!-- Activity Calendar -->
+                    <div class="portal-section">
+                        <h3>📅 Activity Calendar</h3>
+                        <p>Stay updated with upcoming scout meetings and events.</p>
+                        <button class="portal-btn" onclick="viewCalendar()">View Calendar</button>
+                    </div>
+
+                    <!-- Communication Hub -->
+                    <div class="portal-section">
+                        <h3>💬 Communication Hub</h3>
+                        <p>Connect with troop leaders and other parents.</p>
+                        <button class="portal-btn" onclick="openCommunication()">Open Hub</button>
+                    </div>
+
+                    <!-- Resource Library -->
+                    <div class="portal-section">
+                        <h3>📚 Resource Library</h3>
+                        <p>Access guides, manuals, and helpful documents.</p>
+                        <button class="portal-btn" onclick="openResources()">Browse Resources</button>
+                    </div>
+
+                    <!-- Emergency Contacts -->
+                    <div class="portal-section">
+                        <h3>🚨 Emergency Contacts</h3>
+                        <p>Important contact information for emergencies.</p>
+                        <button class="portal-btn" onclick="viewContacts()">View Contacts</button>
+                    </div>
+
+                    <!-- Gear Recommendations -->
+                    <div class="portal-section">
+                        <h3>🎒 Gear Recommendations</h3>
+                        <p>Get personalized gear suggestions for your scout.</p>
+                        <button class="portal-btn" onclick="getRecommendations()">Get Recommendations</button>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="reportAbsence()">Report Absence</button>
+                        <button class="action-btn" onclick="requestMeeting()">Request Meeting</button>
+                        <button class="action-btn" onclick="updateInfo()">Update Information</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Profile Modal Functions
+        function openProfile() {
+            document.getElementById('profileModal').style.display = 'block';
+        }
+
+        function closeProfile() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+
+        function logout() {
+            alert('You have been logged out.');
+            window.location.href = 'project.html';
+        }
+
+        function switchUser() {
+            alert('Switching user...');
+            window.location.href = 'project.html';
+        }
+
+        function visitNexGen() {
+            alert('Visiting NexGen Technologies...');
+        }
+
+        function openCart() {
+            const cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty</p>';
+                cartTotal.innerHTML = '';
+            } else {
+                let total = 0;
+                cartItems.innerHTML = cart.map(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    return `<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+                        <strong>${item.product}</strong> - $${item.price} x ${item.quantity} = $${itemTotal}
+                        <button onclick="removeFromCart('${item.product}')" style="margin-left: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
+                    </div>`;
+                }).join('');
+                cartTotal.innerHTML = `<strong>Total: $${total}</strong>`;
+            }
+            
+            document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function removeFromCart(product) {
+            let cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+            cart = cart.filter(item => item.product !== product);
+            localStorage.setItem('scoutCart', JSON.stringify(cart));
+            openCart(); // Refresh cart display
+        }
+
+        function checkout() {
+            alert('Checkout functionality coming soon!');
+        }
+
+        // Parents Portal Functions
+        function viewProgress() {
+            alert('Scout Progress Tracking - Feature coming soon!');
+        }
+
+        function viewCalendar() {
+            alert('Activity Calendar - Feature coming soon!');
+        }
+
+        function openCommunication() {
+            alert('Communication Hub - Feature coming soon!');
+        }
+
+        function openResources() {
+            alert('Resource Library - Feature coming soon!');
+        }
+
+        function viewContacts() {
+            alert('Emergency Contacts:\n\nTroop Leader: John Smith - (555) 123-4567\nAssistant Leader: Jane Doe - (555) 987-6543\nEmergency Services: 911');
+        }
+
+        function getRecommendations() {
+            alert('Gear Recommendations:\n\nBased on your scout\'s age and activities, we recommend:\n- Basic uniform set\n- Hiking boots\n- Weather-appropriate jacket\n- First aid kit\n\nVisit our customize page to personalize gear!');
+        }
+
+        function reportAbsence() {
+            alert('Absence Reporting - Feature coming soon!');
+        }
+
+        function requestMeeting() {
+            alert('Meeting Request - Feature coming soon!');
+        }
+
+        function updateInfo() {
+            alert('Information Update - Feature coming soon!');
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('open');
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const profileModal = document.getElementById('profileModal');
+            const cartModal = document.getElementById('cartModal');
+            if (event.target == profileModal) {
+                profileModal.style.display = 'none';
+            }
+            if (event.target == cartModal) {
+                cartModal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

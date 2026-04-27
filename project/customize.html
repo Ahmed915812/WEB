@@ -1,0 +1,344 @@
+<html>
+    <head>
+     <link rel="stylesheet" href="scout-shop.css">
+     <title>Customize - Scout Shop</title>
+    </head>
+    <body>
+        <div class="shop-container">
+            <!-- Navigation Header -->
+            <header class="shop-header">
+                <div class="header-left">
+                    <div class="logo-header">🏕️</div>
+                </div>
+                
+                <div class="header-center">
+                    <input type="text" class="search-bar" placeholder="Search for your next adventure...">
+                </div>
+                
+                <div class="header-right">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openProfile()">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openCart()">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Profile Modal -->
+            <div id="profileModal" class="modal">
+                <div class="modal-content profile-modal">
+                    <div class="modal-header">
+                        <h3>Profile</h3>
+                        <span class="close" onclick="closeProfile()">&times;</span>
+                    </div>
+                    <button class="modal-btn" onclick="logout()">Log out</button>
+                    <button class="modal-btn" onclick="switchUser()">SWITCH USER</button>
+                    <button class="modal-btn" onclick="visitNexGen()">NexGen Technologies</button>
+                </div>
+            </div>
+
+            <!-- Cart Modal -->
+            <div id="cartModal" class="modal">
+                <div class="modal-content cart-modal">
+                    <div class="modal-header">
+                        <h3>🛒 Your Cart</h3>
+                        <span class="close" onclick="closeCart()">&times;</span>
+                    </div>
+                    <div id="cartItems"></div>
+                    <div id="cartTotal"></div>
+                    <button class="modal-btn checkout-btn" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+
+            <!-- Sub-Navigation -->
+            <nav class="sub-navigation" id="mobileMenu">
+                <a href="home.html" class="nav-link">Home Page</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="scout-shop.html" class="nav-link">Activities</a>
+                <a href="contact-us.html" class="nav-link">Contact Us</a>
+                <a href="parents-portal.html" class="nav-link">Parents Portal</a>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="shop-main">
+                <div class="customize-container">
+                    <h2>Customize Your Scout Gear</h2>
+
+                    <!-- Product Selection -->
+                    <div class="products-selector">
+                        <div class="product-option" onclick="selectProduct('shirt')">
+                            <div class="product-card-custom">
+                                <div class="product-preview">👕</div>
+                                <h3>T-Shirt</h3>
+                                <p>Customize your shirt</p>
+                            </div>
+                        </div>
+
+                        <div class="product-option" onclick="selectProduct('jacket')">
+                            <div class="product-card-custom">
+                                <div class="product-preview">🧥</div>
+                                <h3>Jacket</h3>
+                                <p>Customize your jacket</p>
+                            </div>
+                        </div>
+
+                        <div class="product-option" onclick="selectProduct('pants')">
+                            <div class="product-card-custom">
+                                <div class="product-preview">👖</div>
+                                <h3>Pants</h3>
+                                <p>Customize your pants</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customization Panel -->
+                    <div id="customizePanel" class="customize-panel">
+                        <div class="customize-content">
+                            <div class="customize-preview">
+                                <h3 id="previewTitle">Select a Product</h3>
+                                <div id="previewImage" class="preview-image">👕</div>
+                            </div>
+
+                            <div class="customize-options">
+                                <h3>Customize Options</h3>
+
+                                <!-- Color Selection -->
+                                <div class="customize-group">
+                                    <label>Color:</label>
+                                    <div class="color-picker">
+                                        <span class="color-option" onclick="setColor(this, '#FF0000')" style="background-color: #FF0000;" title="Red"></span>
+                                        <span class="color-option" onclick="setColor(this, '#0000FF')" style="background-color: #0000FF;" title="Blue"></span>
+                                        <span class="color-option" onclick="setColor(this, '#FFFFFF')" style="background-color: #FFFFFF; border: 2px solid #999;" title="White"></span>
+                                        <span class="color-option" onclick="setColor(this, '#FFD700')" style="background-color: #FFD700;" title="Gold"></span>
+                                        <span class="color-option" onclick="setColor(this, '#008000')" style="background-color: #008000;" title="Green"></span>
+                                        <span class="color-option" onclick="setColor(this, '#000000')" style="background-color: #000000;" title="Black"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Size Selection -->
+                                <div class="customize-group">
+                                    <label>Size:</label>
+                                    <select id="sizeSelect" onchange="updateCustomization()">
+                                        <option value="">Select Size</option>
+                                        <option value="XS">Extra Small (XS)</option>
+                                        <option value="S">Small (S)</option>
+                                        <option value="M">Medium (M)</option>
+                                        <option value="L">Large (L)</option>
+                                        <option value="XL">Extra Large (XL)</option>
+                                        <option value="XXL">XXL</option>
+                                    </select>
+                                </div>
+
+                                <!-- Logo/Badge Selection -->
+                                <div class="customize-group">
+                                    <label>Add Logo:</label>
+                                    <div class="logo-options">
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" value="badge" onchange="updateCustomization()">
+                                            Scout Badge
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" value="name" onchange="updateCustomization()">
+                                            Name Embroidery
+                                        </label>
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" value="number" onchange="updateCustomization()">
+                                            Troop Number
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Quantity -->
+                                <div class="customize-group">
+                                    <label>Quantity:</label>
+                                    <input type="number" id="quantityInput" min="1" max="10" value="1" onchange="updateCustomization()">
+                                </div>
+
+                                <!-- Price Display -->
+                                <div class="price-section">
+                                    <p>Base Price: <span id="basePrice">$12</span></p>
+                                    <p>Total: <span id="totalPrice">$12</span></p>
+                                </div>
+
+                                <!-- Add to Cart -->
+                                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script>
+            let currentProduct = null;
+            const basePrice = {
+                shirt: 12,
+                jacket: 25,
+                pants: 15
+            };
+
+            function selectProduct(product) {
+                currentProduct = product;
+                const titles = {
+                    shirt: 'T-Shirt',
+                    jacket: 'Jacket',
+                    pants: 'Pants'
+                };
+                const emojis = {
+                    shirt: '👕',
+                    jacket: '🧥',
+                    pants: '👖'
+                };
+
+                document.getElementById('previewTitle').textContent = titles[product];
+                document.getElementById('previewImage').textContent = emojis[product];
+                document.querySelectorAll('.product-option').forEach(el => el.classList.remove('selected'));
+                event.target.closest('.product-option').classList.add('selected');
+                updateCustomization();
+            }
+
+            function setColor(element, color) {
+                document.querySelectorAll('.color-option').forEach(el => el.classList.remove('active'));
+                element.classList.add('active');
+                updateCustomization();
+            }
+
+            function updateCustomization() {
+                if (!currentProduct) return;
+
+                const size = document.getElementById('sizeSelect').value;
+                const quantity = parseInt(document.getElementById('quantityInput').value) || 1;
+                const basePrice_value = basePrice[currentProduct];
+                
+                // Add extra cost for additional logos
+                const logos = document.querySelectorAll('.checkbox-option input:checked').length;
+                const extraCost = logos * 3;
+                
+                const totalPerItem = basePrice_value + extraCost;
+                const total = totalPerItem * quantity;
+
+                document.getElementById('basePrice').textContent = '$' + basePrice_value;
+                document.getElementById('totalPrice').textContent = '$' + total;
+            }
+
+            function addToCart() {
+                if (!currentProduct) {
+                    alert('Please select a product first!');
+                    return;
+                }
+
+                const size = document.getElementById('sizeSelect').value;
+                if (!size) {
+                    alert('Please select a size!');
+                    return;
+                }
+
+                const quantity = document.getElementById('quantityInput').value;
+                const color = document.querySelector('.color-option.active');
+                const logos = Array.from(document.querySelectorAll('.checkbox-option input:checked')).map(el => el.value);
+
+                alert(`Added to cart:\n${currentProduct.toUpperCase()}\nSize: ${size}\nColor: ${color ? 'Selected' : 'Not selected'}\nQuantity: ${quantity}\nLogos: ${logos.length > 0 ? logos.join(', ') : 'None'}`);
+            }
+
+            // Hamburger Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('open');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('open');
+                });
+            });
+
+            // Profile Modal Functions
+            function openProfile() {
+                document.getElementById('profileModal').style.display = 'block';
+            }
+
+            function closeProfile() {
+                document.getElementById('profileModal').style.display = 'none';
+            }
+
+            function logout() {
+                alert('You have been logged out.');
+                window.location.href = 'project.html';
+            }
+
+            function switchUser() {
+                alert('Switching user...');
+                window.location.href = 'project.html';
+            }
+
+            function visitNexGen() {
+                alert('Visiting NexGen Technologies...');
+            }
+
+            function openCart() {
+                const cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                const cartItems = document.getElementById('cartItems');
+                const cartTotal = document.getElementById('cartTotal');
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p>Your cart is empty</p>';
+                    cartTotal.innerHTML = '';
+                } else {
+                    let total = 0;
+                    cartItems.innerHTML = cart.map(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        return `<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+                            <strong>${item.product}</strong> - $${item.price} x ${item.quantity} = $${itemTotal}
+                            <button onclick="removeFromCart('${item.product}')" style="margin-left: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
+                        </div>`;
+                    }).join('');
+                    cartTotal.innerHTML = `<strong>Total: $${total}</strong>`;
+                }
+                
+                document.getElementById('cartModal').style.display = 'block';
+            }
+
+            function closeCart() {
+                document.getElementById('cartModal').style.display = 'none';
+            }
+
+            function removeFromCart(product) {
+                let cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                cart = cart.filter(item => item.product !== product);
+                localStorage.setItem('scoutCart', JSON.stringify(cart));
+                openCart(); // Refresh cart display
+            }
+
+            function checkout() {
+                alert('Checkout functionality coming soon!');
+            }
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const profileModal = document.getElementById('profileModal');
+                const cartModal = document.getElementById('cartModal');
+                if (event.target == profileModal) {
+                    profileModal.style.display = 'none';
+                }
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            }
+        </script>
+    </body>
+</html>

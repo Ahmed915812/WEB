@@ -1,0 +1,354 @@
+<html>
+    <head>
+     <link rel="stylesheet" href="scout-shop.css">
+     <title>Home - Scout Shop</title>
+    </head>
+    <body>
+        <div class="shop-container">
+            <!-- Navigation Header -->
+            <header class="shop-header">
+                <div class="header-left">
+                    <div class="logo-header">🏕️</div>
+                </div>
+                
+                <div class="header-center">
+                    <input type="text" class="search-bar" placeholder="Search for your next adventure...">
+                </div>
+                
+                <div class="header-right">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openProfile()">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openCart()">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Profile Menu Modal -->
+            <div id="profileModal" class="modal">
+                <div class="modal-content profile-modal">
+                    <div class="modal-header">
+                        <h3>👤 Profile</h3>
+                        <span class="close" onclick="closeProfile()">&times;</span>
+                    </div>
+                    <button class="modal-btn" onclick="logout()">Log out</button>
+                    <button class="modal-btn" onclick="switchUser()">SWITCH USER</button>
+                    <button class="modal-btn" onclick="visitNexGen()">NexGen Technologies</button>
+                </div>
+            </div>
+
+            <!-- Cart Modal -->
+            <div id="cartModal" class="modal">
+                <div class="modal-content cart-modal">
+                    <div class="modal-header">
+                        <h3>🛒 Shopping Cart</h3>
+                        <span class="close" onclick="closeCart()">&times;</span>
+                    </div>
+                    <div id="cartItems"></div>
+                    <div id="cartTotal" style="margin-top: 20px; font-weight: bold;"></div>
+                    <button class="modal-btn" style="margin-top: 20px;" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+
+            <!-- Sub-Navigation -->
+            <nav class="sub-navigation" id="mobileMenu">
+                <a href="home.html" class="nav-link active">Home Page</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="customize.html" class="nav-link">Customize</a>
+                <a href="contact-us.html" class="nav-link">Contact Us</a>
+                <a href="parents-portal.html" class="nav-link">Parents Portal</a>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="shop-main">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <h2>Complete Scout Gear Collection</h2>
+                    <p>Premium uniforms, equipment, and accessories for every Scout adventure</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid-home">
+                    <!-- Shirt Product -->
+                    <div class="product-card-home">
+                        <img src="product.png" alt="T-Shirt" class="product-image">
+                        <h3>T-Shirt</h3>
+                        <p class="price-box">12 $</p>
+                        <button class="product-name" onclick="addToCart('T-Shirt', 12)">Add to Cart</button>
+                    </div>
+
+                    <!-- Pants Product -->
+                    <div class="product-card-home">
+                        <img src="product 2.png" alt="Pants" class="product-image">
+                        <h3>Pants</h3>
+                        <p class="price-box">15 $</p>
+                        <button class="product-name" onclick="addToCart('Pants', 15)">Add to Cart</button>
+                    </div>
+
+                    <!-- Jacket Product -->
+                    <div class="product-card-home">
+                        <img src="prduct 3.png" alt="Jacket" class="product-image">
+                        <h3>Jacket</h3>
+                        <p class="price-box">25 $</p>
+                        <button class="product-name" onclick="addToCart('Jacket', 25)">Add to Cart</button>
+                    </div>
+
+                    <!-- Scout Hat -->
+                    <div class="product-card-home">
+                        <img src="handchef p1.png" alt="Scout Hat" class="product-image">
+                        <h3>Scout Hat</h3>
+                        <p class="price-box">8 $</p>
+                        <button class="product-name" onclick="addToCart('Scout Hat', 8)">Add to Cart</button>
+                    </div>
+
+                    <!-- Hiking Boots -->
+                    <div class="product-card-home">
+                        <img src="handchef p2.png" alt="Hiking Boots" class="product-image">
+                        <h3>Hiking Boots</h3>
+                        <p class="price-box">35 $</p>
+                        <button class="product-name" onclick="addToCart('Hiking Boots', 35)">Add to Cart</button>
+                    </div>
+
+                    <!-- Scout Gloves -->
+                    <div class="product-card-home">
+                        <img src="handchef p3.png" alt="Scout Gloves" class="product-image">
+                        <h3>Scout Gloves</h3>
+                        <p class="price-box">6 $</p>
+                        <button class="product-name" onclick="addToCart('Scout Gloves', 6)">Add to Cart</button>
+                    </div>
+
+                    <!-- Backpack -->
+                    <div class="product-card-home">
+                        <img src="scout shop trger.png" alt="Backpack" class="product-image">
+                        <h3>Backpack</h3>
+                        <p class="price-box">22 $</p>
+                        <button class="product-name" onclick="addToCart('Backpack', 22)">Add to Cart</button>
+                    </div>
+
+                    <!-- First Aid Kit -->
+                    <div class="product-card-home">
+                        <img src="woggle p.png" alt="First Aid Kit" class="product-image">
+                        <h3>First Aid Kit</h3>
+                        <p class="price-box">18 $</p>
+                        <button class="product-name" onclick="addToCart('First Aid Kit', 18)">Add to Cart</button>
+                    </div>
+
+                    <!-- Compass -->
+                    <div class="product-card-home">
+                        <img src="fadrarion p.png" alt="Compass" class="product-image">
+                        <h3>Compass</h3>
+                        <p class="price-box">12 $</p>
+                        <button class="product-name" onclick="addToCart('Compass', 12)">Add to Cart</button>
+                    </div>
+
+                    <!-- Water Bottle -->
+                    <div class="product-card-home">
+                        <img src="girl giude p.png" alt="Water Bottle" class="product-image">
+                        <h3>Water Bottle</h3>
+                        <p class="price-box">5 $</p>
+                        <button class="product-name" onclick="addToCart('Water Bottle', 5)">Add to Cart</button>
+                    </div>
+
+                    <!-- Scout Neckerchief -->
+                    <div class="product-card-home">
+                        <img src="air scout p.png" alt="Neckerchief" class="product-image">
+                        <h3>Neckerchief</h3>
+                        <p class="price-box">4 $</p>
+                        <button class="product-name" onclick="addToCart('Neckerchief', 4)">Add to Cart</button>
+                    </div>
+
+                    <!-- Flashlight -->
+                    <div class="product-card-home">
+                        <img src="land scout p.png" alt="Flashlight" class="product-image">
+                        <h3>Flashlight</h3>
+                        <p class="price-box">15 $</p>
+                        <button class="product-name" onclick="addToCart('Flashlight', 15)">Add to Cart</button>
+                    </div>
+
+                    <!-- Scout Badge Set -->
+                    <div class="product-card-home">
+                        <img src="summer navy scout p.png" alt="Badge Set" class="product-image">
+                        <h3>Badge Set</h3>
+                        <p class="price-box">10 $</p>
+                        <button class="product-name" onclick="addToCart('Badge Set', 10)">Add to Cart</button>
+                    </div>
+
+                    <!-- Sleeping Bag -->
+                    <div class="product-card-home">
+                        <img src="winter navy scout p.png" alt="Sleeping Bag" class="product-image">
+                        <h3>Sleeping Bag</h3>
+                        <p class="price-box">45 $</p>
+                        <button class="product-name" onclick="addToCart('Sleeping Bag', 45)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Customize Order Section -->
+                <section class="customize-section">
+                    <h2>Create Your Custom Scout Order</h2>
+                    <p>Design your perfect scout uniform with our customization tools. Choose from our complete collection of 15+ scout products including clothing, gear, and equipment.</p>
+                    
+                    <div class="customize-quick-options">
+                        <div class="quick-option">
+                            <div class="option-icon">🎨</div>
+                            <h4>Choose Colors</h4>
+                            <p>Select from our premium color palette</p>
+                        </div>
+
+                        <div class="quick-option">
+                            <div class="option-icon">📝</div>
+                            <h4>Add Details</h4>
+                            <p>Add names, numbers, and badges</p>
+                        </div>
+
+                        <div class="quick-option">
+                            <div class="option-icon">📏</div>
+                            <h4>Pick Size</h4>
+                            <p>Select your perfect fit</p>
+                        </div>
+
+                        <div class="quick-option">
+                            <div class="option-icon">🛒</div>
+                            <h4>Order Now</h4>
+                            <p>Add to cart and checkout</p>
+                        </div>
+                    </div>
+
+                    <button class="btn-start-customize" onclick="window.location.href='customize.html'">Start Customizing Now</button>
+                </section>
+
+                <!-- Featured Section -->
+                <section class="featured-section">
+                    <h3>Why Choose Scout Shop?</h3>
+                    <div class="featured-grid">
+                        <div class="featured-item">
+                            <span>✓</span>
+                            <h4>Sustainable Materials</h4>
+                            <p>Eco-friendly uniforms</p>
+                        </div>
+                        <div class="featured-item">
+                            <span>✓</span>
+                            <h4>Fast Shipping</h4>
+                            <p>Quick delivery</p>
+                        </div>
+                        <div class="featured-item">
+                            <span>✓</span>
+                            <h4>Custom Design</h4>
+                            <p>Personalize your order</p>
+                        </div>
+                        <div class="featured-item">
+                            <span>✓</span>
+                            <h4>Best Quality</h4>
+                            <p>Premium materials</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script>
+            function goToCustomize(product) {
+                window.location.href = 'customize.html?product=' + product;
+            }
+
+            // Cart Functions
+            function addToCart(product, price) {
+                let cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                const existingItem = cart.find(item => item.product === product);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ product, price, quantity: 1 });
+                }
+                localStorage.setItem('scoutCart', JSON.stringify(cart));
+                alert(`${product} added to cart!`);
+            }
+
+            function openCart() {
+                const cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                const cartItems = document.getElementById('cartItems');
+                const cartTotal = document.getElementById('cartTotal');
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p>Your cart is empty</p>';
+                    cartTotal.innerHTML = '';
+                } else {
+                    let total = 0;
+                    cartItems.innerHTML = cart.map(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        return `<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+                            <strong>${item.product}</strong> - $${item.price} x ${item.quantity} = $${itemTotal}
+                            <button onclick="removeFromCart('${item.product}')" style="margin-left: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
+                        </div>`;
+                    }).join('');
+                    cartTotal.innerHTML = `<strong>Total: $${total}</strong>`;
+                }
+                
+                document.getElementById('cartModal').style.display = 'block';
+            }
+
+            function closeCart() {
+                document.getElementById('cartModal').style.display = 'none';
+            }
+
+            function removeFromCart(product) {
+                let cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                cart = cart.filter(item => item.product !== product);
+                localStorage.setItem('scoutCart', JSON.stringify(cart));
+                openCart(); // Refresh cart display
+            }
+
+            function checkout() {
+                alert('Checkout functionality coming soon!');
+                // Here you would redirect to a checkout page
+            }
+
+            // Hamburger Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('open');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('open');
+                });
+            });
+
+            // Profile Modal Functions
+            function openProfile() {
+                document.getElementById('profileModal').style.display = 'block';
+            }
+
+            function closeProfile() {
+                document.getElementById('profileModal').style.display = 'none';
+            }
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const profileModal = document.getElementById('profileModal');
+                const cartModal = document.getElementById('cartModal');
+                if (event.target == profileModal) {
+                    profileModal.style.display = 'none';
+                }
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            }
+        </script>
+
+            

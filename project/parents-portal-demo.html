@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parents Portal Component</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-green: #004000;
+            --dark-green: #002b00;
+            --header-maroon: #600000;
+            --accent-gold: #FFD700;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--dark-green);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .parents-portal-demo {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .portal-header h1 {
+            color: var(--accent-gold);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .portal-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        .parents-account-card {
+            background-color: var(--header-maroon);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .parents-account-card h2 {
+            color: var(--accent-gold);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .parents-account-card p {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .parent-entry-btn {
+            background-color: var(--dark-green);
+            color: var(--accent-gold);
+            border: 3px solid var(--accent-gold);
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .parent-entry-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--header-maroon);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--header-maroon);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--accent-gold);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .demo-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .demo-btn {
+            padding: 12px 24px;
+            background-color: var(--header-maroon);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .demo-btn:hover {
+            background-color: #800000;
+            transform: translateY(-2px);
+        }
+
+        .code-section {
+            margin-top: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .code-section h4 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="parents-portal-demo">
+        <div class="portal-header">
+            <h1>👨‍👩‍👧‍👦 Parents Portal</h1>
+            <p>Monitor and manage your children's scouting activities</p>
+        </div>
+
+        <div class="parents-account-card">
+            <h2>Parents Account</h2>
+            <p>Easily monitor your children's purchases and activities with our comprehensive parent dashboard.</p>
+            <button class="parent-entry-btn" onclick="enterParentPortal()">Parent Entry</button>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Activity Tracking</h3>
+                <p>Monitor your child's progress and achievements in real-time.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Purchase History</h3>
+                <p>View all purchases and manage spending limits.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Event Calendar</h3>
+                <p>Stay updated with upcoming scouting events and meetings.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Communication</h3>
+                <p>Connect with troop leaders and other parents.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <button class="demo-btn" onclick="alert('Welcome to the Parents Portal! This is where parents can monitor their children\\'s activities.')">Test Parents Portal</button>
+            <button class="demo-btn" onclick="enterParentPortal()">Enter Parent Portal</button>
+        </div>
+
+        <div class="code-section">
+            <h4>HTML Code for Parents Portal Page:</h4>
+            <div class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;link rel="stylesheet" href="scout-shop.css"&gt;
+    &lt;title&gt;Parents Portal - Scout Shop&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="shop-container"&gt;
+        &lt;!-- Navigation Header --&gt;
+        &lt;header class="shop-header"&gt;
+            &lt;!-- ... existing header code ... --&gt;
+        &lt;/header&gt;
+
+        &lt;!-- Main Content Area --&gt;
+        &lt;main class="shop-main"&gt;
+            &lt;div class="parents-portal"&gt;
+                &lt;h2&gt;👨‍👩‍👧‍👦 Parents Portal&lt;/h2&gt;
+                &lt;p&gt;Welcome to the Parents Portal!&lt;/p&gt;
+
+                &lt;div class="portal-sections"&gt;
+                    &lt;div class="portal-section"&gt;
+                        &lt;h3&gt;Parents Account&lt;/h3&gt;
+                        &lt;p&gt;Easily monitor your children's purchases and activities&lt;/p&gt;
+                        &lt;button class="portal-btn" onclick="enterParentPortal()"&gt;Parent Entry&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;!-- ... other sections ... --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function enterParentPortal() {
+            alert('Entering Parents Portal...');
+            // Add navigation logic here
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+        </div>
+    </div>
+
+    <script>
+        function enterParentPortal() {
+            alert('Welcome to the Parents Portal! Here you can monitor your children\'s activities and purchases.');
+        }
+    </script>
+</body>
+</html>

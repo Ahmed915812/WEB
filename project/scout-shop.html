@@ -1,0 +1,283 @@
+<html>
+    <head>
+     <link rel="stylesheet" href="scout-shop.css">
+     <title>Activities - Scout Shop</title>
+    </head>
+    <body>
+        <div class="shop-container">
+            <!-- Navigation Header -->
+            <header class="shop-header">
+                <div class="header-left">
+                    <div class="logo-header">🏕️</div>
+                </div>
+                
+                <div class="header-center">
+                    <input type="text" class="search-bar" placeholder="Search for activities...">
+                </div>
+                
+                <div class="header-right">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openProfile()">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" onclick="openCart()">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Profile Menu Modal -->
+            <div id="profileModal" class="modal">
+                <div class="modal-content profile-modal">
+                    <div class="modal-header">
+                        <h3>👤 Profile</h3>
+                        <span class="close" onclick="closeProfile()">&times;</span>
+                    </div>
+                    <button class="modal-btn">Log out</button>
+                    <button class="modal-btn">SWITCH USER</button>
+                    <button class="modal-btn">NexGen Technologies</button>
+                </div>
+            </div>
+
+            <!-- Cart Modal -->
+            <div id="cartModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>🛒 Shopping Cart</h3>
+                        <span class="close" onclick="closeCart()">&times;</span>
+                    </div>
+                    <div id="cartItems"></div>
+                    <div id="cartTotal" style="margin-top: 20px; font-weight: bold;"></div>
+                    <button class="modal-btn" style="margin-top: 20px;" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+
+            <!-- Sub-Navigation -->
+            <nav class="sub-navigation" id="mobileMenu">
+                <a href="home.html" class="nav-link">Home Page</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="scout-shop.html" class="nav-link active">Activities</a>
+                <a href="contact-us.html" class="nav-link">Contact Us</a>
+                <a href="parents-portal.html" class="nav-link">Parents Portal</a>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="shop-main">
+                <h2 style="color: white; text-align: center; margin-bottom: 40px;">SCOUT ACTIVITIES</h2>
+
+                <!-- Activities Container -->
+                <div class="activities-container">
+                    <!-- Outdoor Activities -->
+                    <div class="activity-section">
+                        <div class="activity-header">
+                            <div class="activity-title-box outdoor">🏕️ OUTDOOR ACTIVITIES</div>
+                        </div>
+                        
+                        <div class="activity-content-detailed">
+                            <div class="activity-item">
+                                <h4>🔥 Campfire Building</h4>
+                                <p>Learning safety and techniques for starting and maintaining a fire.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>🥾 Hiking & Scavenger Hunt</h4>
+                                <p>Exploring nature while finding specific items or locations.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>⛺ Tent Pitching Races</h4>
+                                <p>Speed-based challenges for setting up and taking down campsites.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>🪚 Axe Yard</h4>
+                                <p>Proper safety, maintenance, and usage of scouting tools.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>🏹 Archery & Tomahawk Throwing</h4>
+                                <p>Precision-based skill building and target practice.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Indoor Activities -->
+                    <div class="activity-section">
+                        <div class="activity-header">
+                            <div class="activity-title-box indoor">🏛️ INDOOR ACTIVITIES</div>
+                        </div>
+
+                        <div class="activity-content-detailed">
+                            <div class="activity-item">
+                                <h4>🎯 Knot-tying Relay Races</h4>
+                                <p>Competitive games focused on speed and accuracy with scout hitches and bends.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>🏥 First Aid Skill Stations</h4>
+                                <p>Hands-on practice for bandaging, CPR basics, and emergency response.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>🗺️ Map & Compass Orienteering</h4>
+                                <p>Learning to read coordinates and navigate using a compass indoors.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>🇬🇧 Citizenship Discussions</h4>
+                                <p>Group talks about community service, leadership, and scout values.</p>
+                            </div>
+                            <div class="activity-item">
+                                <h4>📡 Morse Code Games</h4>
+                                <p>Fun challenges involving sending and decoding secret messages.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Request Activity Section -->
+                <section class="request-activity-section">
+                    <h3>Can't Find Your Activity?</h3>
+                    <p>Request a custom activity or event for your troop</p>
+                    
+                    <form class="request-form">
+                        <input type="text" placeholder="Activity Name" required>
+                        <textarea placeholder="Describe your requested activity" rows="4" required></textarea>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn-request">Submit Request</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+
+        <script>
+            // Profile Modal Functions
+            function openProfile() {
+                document.getElementById('profileModal').style.display = 'block';
+            }
+
+            function closeProfile() {
+                document.getElementById('profileModal').style.display = 'none';
+            }
+
+            function logout() {
+                alert('You have been logged out.');
+                window.location.href = 'project.html';
+            }
+
+            function switchUser() {
+                alert('Switching user...');
+                window.location.href = 'project.html';
+            }
+
+            function visitNexGen() {
+                alert('Visiting NexGen Technologies...');
+            }
+
+            function openCart() {
+                const cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                const cartItems = document.getElementById('cartItems');
+                const cartTotal = document.getElementById('cartTotal');
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p>Your cart is empty</p>';
+                    cartTotal.innerHTML = '';
+                } else {
+                    let total = 0;
+                    cartItems.innerHTML = cart.map(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        return `<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+                            <strong>${item.product}</strong> - $${item.price} x ${item.quantity} = $${itemTotal}
+                            <button onclick="removeFromCart('${item.product}')" style="margin-left: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
+                        </div>`;
+                    }).join('');
+                    cartTotal.innerHTML = `<strong>Total: $${total}</strong>`;
+                }
+                
+                document.getElementById('cartModal').style.display = 'block';
+            }
+
+            function closeCart() {
+                document.getElementById('cartModal').style.display = 'none';
+            }
+
+            function removeFromCart(product) {
+                let cart = JSON.parse(localStorage.getItem('scoutCart')) || [];
+                cart = cart.filter(item => item.product !== product);
+                localStorage.setItem('scoutCart', JSON.stringify(cart));
+                openCart(); // Refresh cart display
+            }
+
+            function checkout() {
+                alert('Checkout functionality coming soon!');
+            }
+
+            // Hamburger Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('open');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('open');
+                });
+            });
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const profileModal = document.getElementById('profileModal');
+                const cartModal = document.getElementById('cartModal');
+                if (event.target == profileModal) {
+                    profileModal.style.display = 'none';
+                }
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            }
+        </script>
+                alert('Cart is currently empty!');
+            }
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('profileModal');
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Hamburger Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('open');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('open');
+                });
+            });
+
+            // Handle form submission
+            document.querySelector('.request-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you! Your activity request has been submitted.');
+                e.target.reset();
+            });
+        </script>
+    </body>
+</html>
+
+
